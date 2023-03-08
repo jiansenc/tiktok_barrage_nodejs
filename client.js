@@ -67,6 +67,7 @@ function init() {
                 let msg = obj.children[0]
                 if (msg) {
                     let mesgobj = utils.messageParse(msg)
+                    ws.send(JSON.stringify({ action: 'message', message: mesgobj }));
                 }
             }
         }
@@ -123,11 +124,11 @@ utils.messageParse = function(dom) {
                     if (gift.nextSibling) {
                         result.giftNum = gift.nextSibling.childNodes[1].data
                     }
-                    console.log(result)
                 }
                 break
         }
     })
+    return result
 }
 
 utils.getLevel = function(str) {
