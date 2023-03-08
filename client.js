@@ -59,12 +59,55 @@ function init() {
                 let obj = mutation.addedNodes[0]
                 let msg = obj.children[0]
                 if (msg) {
-                    let user = msg.childNodes[1].innerText
+                    let fansinfo = utils.getFansLight(msg.childNodes[0])
+                    let user = msg.childNodes[1].innerText.replace("：", '')
                     let text = msg.childNodes[2].innerText
-                    ws.send(JSON.stringify({ action: 'message', user: user, message: text }));
+                    ws.send(JSON.stringify({ action: 'message', user: user, message: text, fansinfo: fansinfo }));
                 }
             }
         }
     });
     chatObserverrom.observe(chatDom, { childList: true });
+}
+
+
+var utils = {}
+
+// 获取粉丝灯牌和等比
+/**
+ * // 获取dom image
+ * @param {*} dom 
+ * @returns {
+ *  lightName: 粉丝灯牌,
+ *  userLevel:用户等级,
+ *  fansLevel:粉丝灯牌等级
+ * }
+ */
+utils.getFansLight = function(dom) {
+    let result = {}
+    dom.childNodes.forEach(item => {
+        result.lightName = item.innerText
+        let images = item.querySelectorAll('img')
+        images.forEach((img, i) => {
+            // 用户等级
+            if (i === 0) {
+                result.userLevel = img.currentSrc
+            }
+            // 用户粉丝等级
+            if (i === 1) {
+                result.fansLevel = img.currentSrc
+            }
+        })
+    })
+    return result
+}
+
+utils.getGiftInfo = function(dom) {
+    let result = {}
+    let giftImage = dom.querySelector('img')
+    result.gift = giftImage.currentSrc
+    if (giftImage) {
+        result.num = giftImage.nextSibling.childNodes[1].data
+    }
+    return result
 }

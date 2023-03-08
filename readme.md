@@ -8,10 +8,9 @@ npm run dev
 - 2.进入直播间页面，打开浏览器按 F12 控制台 注入下面代码
 
 ```javascript
-var script = document.createElement('script')
-script.type = 'text/javascript'
-script.src = 'https://raw.githubusercontent.com/EY5740/tiktok_barrage_nodejs/main/client.js?t=' + new Date().getTime()
-document.getElementsByTagName('head')[0].appendChild(script)
+var scriptElement = document.createElement('script')
+scriptElement.src = 'https://ey5740.github.io/tiktok_barrage_nodejs/client.js?t=' + Math.random()
+document.body.appendChild(scriptElement)
 ```
 
 - 3.观察 node 控制台,这时候弹幕信息会进来
