@@ -67,7 +67,6 @@ function init() {
                 let msg = obj.children[0]
                 if (msg) {
                     let mesgobj = utils.messageParse(msg)
-                    console.log(mesgobj)
                     ws.send(JSON.stringify({ action: 'message', message: mesgobj }));
                 }
             }
