@@ -4,12 +4,12 @@ var observer = null
 var chatObserverrom = null
 var timer = null
 const timeinterval = 10 * 1000 // 断线重连轮询间隔
-
-/**
- * 初始化 DOM 
- * chatDom 聊天文字DOM
- * roomJoinDom 粉丝进入
- */
+var propsId = Object.keys(document.querySelector('.webcast-chatroom___list'))[1]
+    /**
+     * 初始化 DOM 
+     * chatDom 聊天文字DOM
+     * roomJoinDom 粉丝进入
+     */
 const chatDom = document.querySelector('.webcast-chatroom___items').children[0]
 const roomJoinDom = document.querySelector('.webcast-chatroom___bottom-message')
 
@@ -47,7 +47,6 @@ function openWs() {
 }
 
 function init() {
-
     observer = new MutationObserver((mutationsList) => {
         for (let mutation of mutationsList) {
             if (mutation.type === 'childList' && mutation.addedNodes.length) {
@@ -63,12 +62,14 @@ function init() {
     chatObserverrom = new MutationObserver(function(mutationsList, observer) {
         for (let mutation of mutationsList) {
             if (mutation.type === 'childList' && mutation.addedNodes.length) {
-                let obj = mutation.addedNodes[0]
-                let msg = obj.children[0]
-                if (msg) {
-                    let mesgobj = utils.messageParse(msg)
-                    ws.send(JSON.stringify({ action: 'message', message: mesgobj }));
-                }
+                utils.getMessagePly(mutation.addedNodes[0])
+                    // a[Object.keys(a)[1]].children.props.message.payload
+                    // let obj = mutation.addedNodes[0]
+                    // let msg = obj.children[0]
+                    // if (msg) {
+                    //     let mesgobj = utils.messageParse(msg)
+                    //     ws.send(JSON.stringify({ action: 'message', message: mesgobj }));
+                    // }
             }
         }
     });
@@ -142,6 +143,11 @@ utils.getGiftId = function(str) {
     return GIFT_IDS_ENUM[id] || '礼物'
 }
 
+utils.getMessagePly = function(m) {
+    let msg = m[propsId].children.props.message.payload
+    console.log(msg)
+    return msg
+}
 
 
 // 礼物哈希值
