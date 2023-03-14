@@ -47,17 +47,17 @@ function openWs() {
 }
 
 function init() {
-    // observer = new MutationObserver((mutationsList) => {
-    //     for (let mutation of mutationsList) {
-    //         if (mutation.type === 'childList' && mutation.addedNodes.length) {
-    //             let obj = mutation.addedNodes[0]
-    //             let user = obj.children[0]
-    //             let userNick = user.childNodes[1].innerText
-    //             ws.send(JSON.stringify({ action: 'join', message: userNick }));
-    //         }
-    //     }
-    // });
-    // observer.observe(roomJoinDom, { childList: true });
+    observer = new MutationObserver((mutationsList) => {
+        for (let mutation of mutationsList) {
+            if (mutation.type === 'childList' && mutation.addedNodes.length) {
+                let obj = mutation.addedNodes[0]
+                let user = obj.children[0]
+                let userNick = user.childNodes[1].innerText
+                ws.send(JSON.stringify({ action: 'join', message: userNick }));
+            }
+        }
+    });
+    observer.observe(roomJoinDom, { childList: true });
 
     chatObserverrom = new MutationObserver(function(mutationsList, observer) {
         for (let mutation of mutationsList) {
