@@ -98,7 +98,7 @@ utils.messageParse = function(dom) {
                 isGift: true,
                 gift_id: msg.gift.id,
                 gift_name: msg.gift.name,
-                gift_number: parseInt(msg.groupCount),
+                gift_number: parseInt(msg.comboCount),
                 gift_image: msg.gift.icon.urlListList[0],
                 gift_diamondCount: msg.gift.diamondCount,
                 gift_describe: msg.gift.describe,

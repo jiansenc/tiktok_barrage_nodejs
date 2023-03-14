@@ -13,6 +13,7 @@ wss.on("connection", function connection(ws) {
                 if (message.message.message === undefined) {
                     console.log(message.message)
                 }
+                console.log(message.message)
                 console.log(`[${new Date().toLocaleTimeString()}] : ${message.message.user_nickName}${message.message.message}`)
                 break
             case 'join':
