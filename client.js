@@ -62,7 +62,7 @@ function init() {
     chatObserverrom = new MutationObserver(function(mutationsList, observer) {
         for (let mutation of mutationsList) {
             if (mutation.type === 'childList' && mutation.addedNodes.length) {
-                let message = utils.getMessagePly(mutation.addedNodes[0])
+                let message = utils.messageParse(mutation.addedNodes[0])
                 ws.send(JSON.stringify({ action: 'message', message: message }));
             }
         }
@@ -74,6 +74,7 @@ function init() {
 var utils = {}
 
 utils.messageParse = function(dom) {
+    console.log(dom[propsId].children.props)
     let msg = dom[propsId].children.props.message.payload
     let result = {
         user_nickName: msg.user.nickname,
