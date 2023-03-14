@@ -74,7 +74,6 @@ function init() {
 var utils = {}
 
 utils.messageParse = function(dom) {
-    console.log(dom[propsId].children.props)
     let msg = dom[propsId].children.props.message.payload
     let result = {
         user_nickName: msg.user.nickname,
@@ -107,5 +106,6 @@ utils.messageParse = function(dom) {
             })
             break
     }
+    console.log(result)
     return result
 }
