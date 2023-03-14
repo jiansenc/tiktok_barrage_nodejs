@@ -5,6 +5,7 @@ var chatObserverrom = null
 var timer = null
 const timeinterval = 10 * 1000 // 断线重连轮询间隔
 var propsId = Object.keys(document.querySelector('.webcast-chatroom___list'))[1]
+console.log(propsId)
     /**
      * 初始化 DOM 
      * chatDom 聊天文字DOM
@@ -47,23 +48,26 @@ function openWs() {
 }
 
 function init() {
-    observer = new MutationObserver((mutationsList) => {
-        for (let mutation of mutationsList) {
-            if (mutation.type === 'childList' && mutation.addedNodes.length) {
-                let obj = mutation.addedNodes[0]
-                let user = obj.children[0]
-                let userNick = user.childNodes[1].innerText
-                ws.send(JSON.stringify({ action: 'join', message: userNick }));
-            }
-        }
-    });
-    observer.observe(roomJoinDom, { childList: true });
+    // observer = new MutationObserver((mutationsList) => {
+    //     for (let mutation of mutationsList) {
+    //         if (mutation.type === 'childList' && mutation.addedNodes.length) {
+    //             let obj = mutation.addedNodes[0]
+    //             let user = obj.children[0]
+    //             let userNick = user.childNodes[1].innerText
+    //             ws.send(JSON.stringify({ action: 'join', message: userNick }));
+    //         }
+    //     }
+    // });
+    // observer.observe(roomJoinDom, { childList: true });
 
     chatObserverrom = new MutationObserver(function(mutationsList, observer) {
         for (let mutation of mutationsList) {
             if (mutation.type === 'childList' && mutation.addedNodes.length) {
-                let message = utils.messageParse(mutation.addedNodes[0])
-                ws.send(JSON.stringify({ action: 'message', message: message }));
+                let b = mutation.addedNodes[0]
+                if (b[propsId].children.props.message) {
+                    let message = utils.messageParse(b)
+                    ws.send(JSON.stringify({ action: 'message', message: message }));
+                }
             }
         }
     });
@@ -80,11 +84,11 @@ utils.messageParse = function(dom) {
         user_id: msg.user.id,
         user_gender: msg.user.gender === 1 ? '男' : '女',
         user_level: msg.user.level,
-        user_levelImage: msg.user.badgeImageListList[0].urlListList[0],
+        user_levelImage: msg.user.badgeImageListList[0] && msg.user.badgeImageListList[0].urlListList[0],
         user_avatar: msg.user.avatarThumb.urlListList[0],
         user_isAdmin: msg.user.userAttr.isAdmin,
-        user_fansLevel: parseInt(msg.user.badgeImageListV2List[0].content.level),
-        user_fansLightName: msg.user.badgeImageListV2List[0].content.alternativeText,
+        user_fansLevel: msg.user.badgeImageListV2List[0] && parseInt(msg.user.badgeImageListV2List[0].content.level),
+        user_fansLightName: msg.user.badgeImageListV2List[0] && msg.user.badgeImageListV2List[0].content.alternativeText,
     }
     switch (msg.common.method) {
         case 'WebcastGiftMessage':
@@ -105,7 +109,19 @@ utils.messageParse = function(dom) {
                 message: msg.content
             })
             break
+        default:
+            return null
     }
-    console.log(result)
     return result
+}
+
+function setObject(obj) {
+    let b = obj || {}
+    if (!b.urlListList) {
+        b.urlListList = [{}]
+    }
+    if (!b.content) {
+        b.content = {}
+    }
+    return b
 }
