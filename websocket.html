@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>web socket test</title>
+    <style>
+        #ul {
+            height: 500px;
+            font-size: 12px;
+            overflow: auto;
+            background-color: #ddd;
+            list-style: none;
+        }
+        
+        li {
+            background-color: #fff;
+            padding: 10px;
+            font-size: 14px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="ul"></ul>
+    <script type="text/javascript">
+        ws = new WebSocket('ws://127.0.0.1:9527')
+        let dom = document.querySelector('#ul')
+        ws.onopen = function(e) {
+            console.log('打开')
+        }
+
+        ws.onmessage = function(e) {
+            console.log(e.data)
+            let li = document.createElement('li')
+            li.innerText = e.data
+            dom.appendChild(li)
+        }
+        ws.onerror = function(e) {
+            console.log('错误', e)
+        }
+        ws.onclose = function(e) {
+            console.log(e)
+        }
+    </script>
+</body>
+
+</html>
