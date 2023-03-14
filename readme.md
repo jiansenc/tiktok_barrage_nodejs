@@ -58,3 +58,8 @@ document.body.appendChild(scriptElement)
 | gift_image         | 礼物图片     | String  |
 | gift_diamondCount  | 礼物 A       | Int     |
 | gift_describe      | 礼物文本     | String  |
+
+## 正向代理 测试工具
+
+本代码默认需要一个后端 启动 websocket 来接收信息, 考虑到 编程语言环境问题,提供了 websocket 转发工具 [ WSLINK.exe ] ,易语言编写可能会被误杀。启动 WSLINK 后默认提供 ws://127.0.0.1:9527 , 这个工具会帮你转发 socket 消息,即使你是前端页面也能接收消息了。
+测试例子在 websocket.html
