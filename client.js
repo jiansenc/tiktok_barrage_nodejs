@@ -85,6 +85,12 @@ utils.messageParse = function(dom) {
     }
     let msg = dom[propsId].children.props.message.payload
     let result = {
+        gift_id: null,
+        gift_name: null,
+        gift_number: null,
+        gift_image: null,
+        gift_diamondCount: null,
+        gift_describe: null,
         user_nickName: msg.user.nickname,
         user_id: msg.user.id,
         user_gender: msg.user.gender === 1 ? '男' : '女',
@@ -98,7 +104,7 @@ utils.messageParse = function(dom) {
     switch (msg.common.method) {
         case 'WebcastGiftMessage':
             result = Object.assign(result, {
-                message: msg.common.describe,
+                msg_content: msg.common.describe,
                 isGift: true,
                 gift_id: msg.gift.id,
                 gift_name: msg.gift.name,
@@ -111,13 +117,13 @@ utils.messageParse = function(dom) {
         case 'WebcastChatMessage':
             result = Object.assign(result, {
                 isGift: false,
-                message: msg.content
+                msg_content: msg.content
             })
             break
         default:
             result = Object.assign(result, {
                 isGift: false,
-                message: msg.content
+                msg_content: msg.content
             })
             break
     }
