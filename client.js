@@ -66,7 +66,9 @@ function init() {
                 let b = mutation.addedNodes[0]
                 if (b[propsId].children.props.message) {
                     let message = utils.messageParse(b)
-                    ws.send(JSON.stringify({ action: 'message', message: message }));
+                    if (message) {
+                        ws.send(JSON.stringify({ action: 'message', message: message }));
+                    }
                 }
             }
         }
@@ -78,6 +80,9 @@ function init() {
 var utils = {}
 
 utils.messageParse = function(dom) {
+    if (!dom[propsId].children.props.message) {
+        return null
+    }
     let msg = dom[propsId].children.props.message.payload
     let result = {
         user_nickName: msg.user.nickname,
@@ -97,7 +102,7 @@ utils.messageParse = function(dom) {
                 isGift: true,
                 gift_id: msg.gift.id,
                 gift_name: msg.gift.name,
-                gift_number: parseInt(msg.groupCount),
+                gift_number: parseInt(msg.comboCount),
                 gift_image: msg.gift.icon.urlListList[0],
                 gift_diamondCount: msg.gift.diamondCount,
                 gift_describe: msg.gift.describe,
@@ -110,7 +115,11 @@ utils.messageParse = function(dom) {
             })
             break
         default:
-            return null
+            result = Object.assign(result, {
+                isGift: false,
+                message: msg.content
+            })
+            break
     }
     return result
 }

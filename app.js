@@ -10,7 +10,9 @@ wss.on("connection", function connection(ws) {
         let message = JSON.parse(data.toString())
         switch (message.action) {
             case 'message':
-                console.log(`[${new Date().toLocaleTimeString()}] : ${message.message.user_nickName}${message.message.message}`)
+                if (message.message) {
+                    console.log(`[${new Date().toLocaleTimeString()}] : ${message.message.user_nickName}${message.message.message}`)
+                }
                 break
             case 'join':
                 console.log(`[${new Date().toLocaleTimeString()}] : ${message.message} 进入`)
