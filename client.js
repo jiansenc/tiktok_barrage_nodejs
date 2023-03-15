@@ -140,3 +140,5 @@ function setObject(obj) {
     }
     return b
 }
+
+// 礼物ID
