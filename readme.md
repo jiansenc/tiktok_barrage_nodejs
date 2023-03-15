@@ -19,16 +19,42 @@ document.body.appendChild(scriptElement)
 
 ```json
 {
-  "userLevelSrc": "https://p6-webcast.douyinpic.com/img/webcast/user_grade_level_v5_38.png~tplv-obj.image",
-  "userLevel": "38", // 用户等级
-  "fansLevelSrc": "https://p6-webcast.douyinpic.com/img/webcast/fansclub_level_v6_10.png~tplv-obj.image",
-  "fansLevel": "10", // 粉丝灯牌等级
-  "fansLightName": "灯牌7", // 粉丝灯牌名称
-  "userNick": "wjunkop", // 用户昵称
-  "message": "送出了 粉丝灯牌 × 1", // 消息内容体
-  "isGift": true, // 是否礼物消息
-  "giftUrl": "https://p3-webcast.douyinpic.com/img/webcast/722e56b42551d6490e5ebd9521287c67~tplv-obj.png",
-  "giftId": "粉丝灯牌", // 礼物名称
-  "giftNum": "1" // 礼物个数
+  "user_nickName": "成成",
+  "user_id": "105171130648",
+  "user_gender": "男",
+  "user_level": 0,
+  "user_levelImage": "http://p3-webcast.douyinpic.com/img/webcast/user_grade_level_v5_17.png~tplv-obj.image",
+  "user_avatar": "https://p11.douyinpic.com/aweme/100x100/aweme-avatar/tos-cn-avt-0015_f8711d5bc03513fe1d3def88d6d07384.jpeg?from=3067671334",
+  "user_isAdmin": false,
+  "user_fansLevel": 17,
+  "user_fansLightName": "荣誉等级17级勋章",
+  "message": "成成:送给主播 1个人气票",
+  "isGift": true,
+  "gift_id": "3992",
+  "gift_name": "人气票",
+  "gift_number": 1,
+  "gift_image": "http://p6-webcast.douyinpic.com/img/webcast/e9b7db267d0501b8963d8000c091e123.png~tplv-obj.png",
+  "gift_diamondCount": 1,
+  "gift_describe": "送出人气票"
 }
 ```
+
+| 字段               | 说明         | 类型    |
+| ------------------ | ------------ | ------- |
+| message            | 消息内容     | String  |
+| user_nickName      | 昵称         | String  |
+| user_id            | 用户 ID      | String  |
+| user_gender        | 性别         | String  |
+| user_level         | 用户等级     | Int     |
+| user_levelImage    | 用户等级徽章 | String  |
+| user_avatar        | 用户头像     | String  |
+| user_isAdmin       | 是否管理员   | Boolean |
+| user_fansLevel     | 粉丝灯牌等级 | Int     |
+| user_fansLightName | 粉丝灯牌     | String  |
+| isGift             | 是否是礼物   | Boolean |
+| gift_id            | 礼物 ID      | String  |
+| gift_name          | 礼物名称     | String  |
+| gift_number        | 礼物数量     | Int     |
+| gift_image         | 礼物图片     | String  |
+| gift_diamondCount  | 礼物 A       | Int     |
+| gift_describe      | 礼物文本     | String  |

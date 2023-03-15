@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "dev": "node ./app.js"
+        "dev": "node ./app.js",
+        "test": "node ./test/index.js"
     },
     "type": "module",
     "author": "",
