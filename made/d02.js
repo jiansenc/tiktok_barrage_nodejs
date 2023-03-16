@@ -58,9 +58,7 @@ function init() {
                     user_nickName: user.nickname,
                     user_avatar: user.avatarThumb.urlList[0],
                     msg_content: `${user.nickname} 来了`
-
                 }
-                console.log(msg)
                 ws.send(JSON.stringify({ action: 'join', message: msg }));
             }
         }
