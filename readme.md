@@ -41,7 +41,7 @@ document.body.appendChild(scriptElement)
 
 | 字段               | 说明         | 类型    |
 | ------------------ | ------------ | ------- |
-| message            | 消息内容     | String  |
+| msg_content        | 消息内容     | String  |
 | user_nickName      | 昵称         | String  |
 | user_id            | 用户 ID      | String  |
 | user_gender        | 性别         | String  |

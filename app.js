@@ -7,6 +7,7 @@ wss.on("connection", function connection(ws) {
     console.log("客户端连接成功");
     ws.on("message", function message(data) {
         let message = JSON.parse(data.toString())
+        console.log(message.message.user_nickName + ':' + message.message.msg_content)
         wss.clients.forEach(cen => {
             cen.send(JSON.stringify(message))
         })
