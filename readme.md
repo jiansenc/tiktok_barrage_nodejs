@@ -41,7 +41,7 @@ document.body.appendChild(scriptElement)
 
 | 字段               | 说明         | 类型    |
 | ------------------ | ------------ | ------- |
-| message            | 消息内容     | String  |
+| msg_content        | 消息内容     | String  |
 | user_nickName      | 昵称         | String  |
 | user_id            | 用户 ID      | String  |
 | user_gender        | 性别         | String  |
@@ -58,3 +58,8 @@ document.body.appendChild(scriptElement)
 | gift_image         | 礼物图片     | String  |
 | gift_diamondCount  | 礼物 A       | Int     |
 | gift_describe      | 礼物文本     | String  |
+
+## 正向 websocket
+
+考虑到编程语言环境问题,使用易语言开发了 WSLINK.exe(易语言编写请误杀),
+启动软件后开启 websocket 服务 ws://127.0.0.1:9527 , 其他编程语言或前端直接监听就好了。
