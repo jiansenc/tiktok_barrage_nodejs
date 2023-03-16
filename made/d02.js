@@ -60,6 +60,7 @@ function init() {
                     msg_content: `${user.nickname} 来了`
 
                 }
+                console.log(msg)
                 ws.send(JSON.stringify({ action: 'join', message: msg }));
             }
         }
@@ -73,7 +74,6 @@ function init() {
                 if (b[propsId].children.props.message) {
                     let message = utils.messageParse(b)
                     if (message) {
-                        console.log(message)
                         ws.send(JSON.stringify({ action: 'message', message: message }));
                     }
                 }
