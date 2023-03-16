@@ -48,14 +48,32 @@ function openWs() {
 }
 
 function init() {
+    observer = new MutationObserver((mutationsList) => {
+        for (let mutation of mutationsList) {
+            if (mutation.type === 'childList' && mutation.addedNodes.length) {
+                let dom = mutation.addedNodes[0]
+                let user = dom[propsId].children.props.message.payload.user
+                let msg = {
+                    user_id: user.id,
+                    user_nickName: user.nickname,
+                    user_avatar: user.avatarThumb.urlList[0],
+                    msg_content: `${user.nickname} 来了`
+
+                }
+                ws.send(JSON.stringify({ action: 'join', message: msg }));
+            }
+        }
+    });
+    observer.observe(roomJoinDom, { childList: true });
+
     chatObserverrom = new MutationObserver(function(mutationsList, observer) {
         for (let mutation of mutationsList) {
             if (mutation.type === 'childList' && mutation.addedNodes.length) {
                 let b = mutation.addedNodes[0]
-                console.log(b)
                 if (b[propsId].children.props.message) {
                     let message = utils.messageParse(b)
                     if (message) {
+                        console.log(message)
                         ws.send(JSON.stringify({ action: 'message', message: message }));
                     }
                 }
