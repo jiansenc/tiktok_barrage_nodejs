@@ -179,4 +179,5 @@ if (window.onDouyinServer) {
 
 window.removeVideoLayer = function() {
     document.querySelector('.basicPlayer').remove()
+    console.log('删除画面成功,不影响弹幕信息接收')
 }
