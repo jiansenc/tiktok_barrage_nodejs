@@ -100,12 +100,12 @@ utils.messageParse = function(dom) {
         user_nickName: msg.user.nickname,
         user_id: msg.user.id,
         user_gender: msg.user.gender === 1 ? '男' : '女',
-        user_level: msg.user.level,
-        user_levelImage: msg.user.badgeImageListList[0] && msg.user.badgeImageListList[0].urlListList[0],
+        user_level: getLevel(msg.user.badgeImageList, 1),
+        // user_levelImage: msg.user.badgeImageListList[0] && msg.user.badgeImageListList[0].urlListList[0],
         user_avatar: msg.user.avatarThumb.urlListList[0],
         user_isAdmin: msg.user.userAttr.isAdmin,
-        user_fansLevel: msg.user.badgeImageListV2List[0] && parseInt(msg.user.badgeImageListV2List[0].content.level),
-        user_fansLightName: msg.user.badgeImageListV2List[0] && msg.user.badgeImageListV2List[0].content.alternativeText,
+        user_fansLevel: getLevel(msg.user.badgeImageList, 7),
+        // user_fansLightName: msg.user.badgeImageListV2List[0] && msg.user.badgeImageListV2List[0].content.alternativeText,
     }
     switch (msg.common.method) {
         case 'WebcastGiftMessage':
