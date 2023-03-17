@@ -169,5 +169,3 @@ const Barrage = class {
         return result
     }
 }
-
-let barrage = new Barrage({ join: true })
