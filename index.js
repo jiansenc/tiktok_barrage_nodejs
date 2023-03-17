@@ -71,7 +71,6 @@ const Barrage = class {
                         if (this.eventRegirst.join) {
                             this.event['join'](msg)
                         }
-
                         this.ws.send(JSON.stringify({ action: 'join', message: msg }));
                     }
                 }
@@ -86,7 +85,6 @@ const Barrage = class {
                     let b = mutation.addedNodes[0]
                     if (b[this.propsId].children.props.message) {
                         let message = this.messageParse(b)
-                        console.log(message)
                         if (message) {
                             if (this.eventRegirst.message) {
                                 this.event['join'](message)
