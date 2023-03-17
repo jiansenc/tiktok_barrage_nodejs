@@ -11,7 +11,7 @@ const Barrage = class {
     option = {}
     event = {}
     eventRegirst = {}
-    constructor(option) {
+    constructor(option = {}) {
         this.option = option
         let { link } = option
         if (link) {
@@ -57,7 +57,6 @@ const Barrage = class {
         }, this.timeinterval)
     }
     runServer() {
-        console.log('this.option.join', this.option.join)
         if (this.option.join) {
             this.observer = new MutationObserver((mutationsList) => {
                 for (let mutation of mutationsList) {
@@ -171,12 +170,3 @@ const Barrage = class {
 if (window.onDouyinServer) {
     window.onDouyinServer()
 }
-
-/**
- * window.onDouyinServer = function() {
-    new Barrage({ join: true })
-}
-var scriptElement = document.createElement('script')
-scriptElement.src = 'https://jiansenc.github.io/tiktok_barrage_nodejs/index.js?t=' + Math.random()
-document.body.appendChild(scriptElement)
- */
