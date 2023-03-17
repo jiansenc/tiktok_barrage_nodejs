@@ -82,7 +82,7 @@ utils.messageParse = function(dom) {
         user_id: msg.user.id,
         user_gender: msg.user.gender === 1 ? '男' : '女',
         user_level: getLevel(msg.user.badgeImageList, 1),
-        // user_levelImage: msg.user.badgeImageListList[0] && msg.user.badgeImageListList[0].urlListList[0],
+        user_levelImage: "",
         user_avatar: msg.user.avatarThumb.urlListList[0],
         user_isAdmin: msg.user.userAttr.isAdmin,
         user_fansLevel: getLevel(msg.user.badgeImageList, 7),
