@@ -13,9 +13,12 @@ const Barrage = class {
     eventRegirst = {}
     constructor(option = {}) {
         this.option = option
-        let { link } = option
+        let { link, removePlay } = option
         if (link) {
             this.wsurl = link
+        }
+        if (removePlay) {
+            document.querySelector('.basicPlayer').remove()
         }
         this.propsId = Object.keys(document.querySelector('.webcast-chatroom___list'))[1]
         this.chatDom = document.querySelector('.webcast-chatroom___items').children[0]
@@ -33,7 +36,7 @@ const Barrage = class {
         this.event[e] = cb
     }
     openWs() {
-        console.log('连接成功')
+        console.log('服务已经连接成功,开始接收数据！')
         clearInterval(this.timer)
         this.runServer()
     }
