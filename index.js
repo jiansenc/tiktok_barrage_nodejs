@@ -36,7 +36,7 @@ const Barrage = class {
         this.event[e] = cb
     }
     openWs() {
-        console.log('服务已经连接成功,开始接收数据！')
+        console.log(`[${new Date().toLocaleTimeString()}]`, '服务已经连接成功!')
         clearInterval(this.timer)
         this.runServer()
     }
@@ -100,6 +100,9 @@ const Barrage = class {
         this.chatObserverrom.observe(this.chatDom, { childList: true });
     }
     getUser(user) {
+        if (!user) {
+            return
+        }
         let msg = {
             user_level: this.getLevel(user.badgeImageList, 1),
             user_fansLevel: this.getLevel(user.badgeImageList, 7),
@@ -172,4 +175,8 @@ const Barrage = class {
 
 if (window.onDouyinServer) {
     window.onDouyinServer()
+}
+
+window.removeVideoLayer = function() {
+    document.querySelector('.basicPlayer').remove()
 }
