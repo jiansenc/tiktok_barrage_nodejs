@@ -5,7 +5,6 @@ var chatObserverrom = null
 var timer = null
 const timeinterval = 10 * 1000 // 断线重连轮询间隔
 var propsId = Object.keys(document.querySelector('.webcast-chatroom___list'))[1]
-console.log(propsId)
     /**
      * 初始化 DOM 
      * chatDom 聊天文字DOM
@@ -52,7 +51,6 @@ function init() {
         for (let mutation of mutationsList) {
             if (mutation.type === 'childList' && mutation.addedNodes.length) {
                 let b = mutation.addedNodes[0]
-                console.log(b)
                 if (b[propsId].children.props.message) {
                     let message = utils.messageParse(b)
                     if (message) {
@@ -83,11 +81,11 @@ utils.messageParse = function(dom) {
         user_nickName: msg.user.nickname,
         user_id: msg.user.id,
         user_gender: msg.user.gender === 1 ? '男' : '女',
-        user_level: msg.user.level,
-        user_levelImage: msg.user.badgeImageListList[0] && msg.user.badgeImageListList[0].urlListList[0],
+        user_level: getLevel(msg.user.badgeImageList, 1),
+        // user_levelImage: msg.user.badgeImageListList[0] && msg.user.badgeImageListList[0].urlListList[0],
         user_avatar: msg.user.avatarThumb.urlListList[0],
         user_isAdmin: msg.user.userAttr.isAdmin,
-        user_fansLevel: msg.user.badgeImageListV2List[0] && parseInt(msg.user.badgeImageListV2List[0].content.level),
+        user_fansLevel: getLevel(msg.user.badgeImageList, 7),
         user_fansLightName: msg.user.badgeImageListV2List[0] && msg.user.badgeImageListV2List[0].content.alternativeText,
     }
     switch (msg.common.method) {
@@ -131,3 +129,18 @@ function setObject(obj) {
 }
 
 // 礼物ID
+// 1 用户等级
+// 7 粉丝灯牌
+function getLevel(arr, type) {
+    if (!arr || arr.length === 0) {
+        return 0
+    }
+    let item = arr.find(i => {
+        return i.imageType === type
+    })
+    if (item) {
+        return parseInt(item.content.level)
+    } else {
+        return 0
+    }
+}

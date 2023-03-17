@@ -5,7 +5,6 @@ var chatObserverrom = null
 var timer = null
 const timeinterval = 10 * 1000 // 断线重连轮询间隔
 var propsId = Object.keys(document.querySelector('.webcast-chatroom___list'))[1]
-console.log(propsId)
     /**
      * 初始化 DOM 
      * chatDom 聊天文字DOM
@@ -54,6 +53,8 @@ function init() {
                 let dom = mutation.addedNodes[0]
                 let user = dom[propsId].children.props.message.payload.user
                 let msg = {
+                    user_level: getLevel(user.badgeImageList, 1),
+                    user_fansLevel: getLevel(user.badgeImageList, 7),
                     user_id: user.id,
                     user_nickName: user.nickname,
                     user_avatar: user.avatarThumb.urlList[0],
@@ -147,3 +148,18 @@ function setObject(obj) {
 }
 
 // 礼物ID
+// 1 用户等级
+// 7 粉丝灯牌
+function getLevel(arr, type) {
+    if (!arr || arr.length === 0) {
+        return 0
+    }
+    let item = arr.find(i => {
+        return i.imageType === type
+    })
+    if (item) {
+        return parseInt(item.content.level)
+    } else {
+        return 0
+    }
+}
