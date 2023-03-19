@@ -9,10 +9,10 @@ wss.on("connection", function connection(ws) {
         let message = JSON.parse(data.toString())
         switch (message.action) {
             case 'message':
-                console.log(message.message.user_nickName + ':' + message.message.msg_content)
+                console.log(getTime(), message.message.user_nickName + ':' + message.message.msg_content)
                 break
             case 'join':
-                console.log(message.message.user_nickName + ':' + message.message.msg_content)
+                console.log(getTime(), message.message.user_nickName + ':' + message.message.msg_content)
                 break
         }
         wss.clients.forEach(cen => {
@@ -20,5 +20,9 @@ wss.on("connection", function connection(ws) {
         })
     });
 });
+
+function getTime() {
+    return `[${new Date().toLocaleTimeString()}]`
+}
 
 console.log('打开-> http://127.0.0.1:9527')
