@@ -11,7 +11,7 @@ const Barrage = class {
     option = {}
     event = {}
     eventRegirst = {}
-    constructor(option = { gift: true }) {
+    constructor(option = { message: true }) {
         this.option = option
         let { link, removePlay } = option
         if (link) {
@@ -92,7 +92,7 @@ const Barrage = class {
                             if (this.eventRegirst.message) {
                                 this.event['join'](message)
                             }
-                            if (_this.option.gift === false && message.isGift) {
+                            if (_this.option.message === false && !message.isGift) {
                                 return
                             }
                             this.ws.send(JSON.stringify({ action: 'message', message: message }));

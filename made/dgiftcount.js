@@ -1,5 +1,5 @@
 window.onDouyinServer = function() {
-    new Barrage({ gift: false })
+    new Barrage({ message: false })
 }
 console.clear()
 console.log(`[${new Date().toLocaleTimeString()}]`, '正在载入JS,请稍后..')
