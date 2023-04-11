@@ -92,7 +92,7 @@ const Barrage = class {
                             if (this.eventRegirst.message) {
                                 this.event['join'](message)
                             }
-                            if (_this.option.gift === false && message.message.isGift) {
+                            if (_this.option.gift === false && message.isGift) {
                                 return
                             }
                             this.ws.send(JSON.stringify({ action: 'message', message: message }));
