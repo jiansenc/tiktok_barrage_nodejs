@@ -11,7 +11,7 @@ const Barrage = class {
     option = {}
     event = {}
     eventRegirst = {}
-    constructor(option = {}) {
+    constructor(option = { gift: true }) {
         this.option = option
         let { link, removePlay } = option
         if (link) {
@@ -60,6 +60,7 @@ const Barrage = class {
         }, this.timeinterval)
     }
     runServer() {
+        let _this = this
         if (this.option.join) {
             this.observer = new MutationObserver((mutationsList) => {
                 for (let mutation of mutationsList) {
@@ -90,6 +91,9 @@ const Barrage = class {
                         if (message) {
                             if (this.eventRegirst.message) {
                                 this.event['join'](message)
+                            }
+                            if (_this.option.gift === false && message.isGift) {
+                                return
                             }
                             this.ws.send(JSON.stringify({ action: 'message', message: message }));
                         }
