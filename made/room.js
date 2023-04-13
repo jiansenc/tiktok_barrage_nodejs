@@ -36,6 +36,9 @@ const Barrage = class {
         });
         this.chatObserverrom.observe(this.chatDom, { childList: true });
         console.log('安装完成 √')
+        setTimeout(() => {
+            window.electronAPI.closeDevTools()
+        }, 3000)
     }
     getUser(user) {
         if (!user) {
