@@ -111,20 +111,18 @@ let bar = new Barrage()
 
 bar.runServer()
 
-let chatTemplate = `<li><div style="display: flex; align-items: center; margin-bottom: 12px;" class="chat-bubble">
+let chatTemplate = `<div style="display: flex; align-items: center; margin-bottom: 12px;" class="chat-bubble">
   <img src="{src}" alt="Avatar" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 8px;" class="avatar">
   <div style="display: flex; flex-direction: column; padding: 8px; background-color: #F5F5F5; border-radius: 8px;" class="message">
     <div style="font-weight: bold; margin-bottom: 4px;" class="user-name">{nick}</div>
     <div style="margin-bottom: 4px;" class="text">{text}</div>
     <div style="font-size: 12px; color: #888888;" class="time">{time}</div>
   </div>
-</div></li>`
+</div>`
 
 function insertDom(msg) {
     console.log(msg)
-    if (!msg.isGift) {
-        item.innerHTML = chatTemplate.replace('{src}', msg.user_avatar).replace('{nick}', msg.user_nickName).replace('{text}', msg.msg_content)
-        _box.appendChild(item)
-    }
-
+    let item = document.createElement('li')
+    item.innerHTML = chatTemplate.replace('{src}', msg.user_avatar).replace('{nick}', msg.user_nickName).replace('{text}', msg.msg_content)
+    _box.appendChild(item)
 }
