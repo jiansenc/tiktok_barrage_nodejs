@@ -23,9 +23,6 @@ const Barrage = class {
                             ...this.getUser(user),
                             ... { msg_content: `${user.nickname} 来了` }
                         }
-                        if (this.eventRegirst.join) {
-                            this.event['join'](msg)
-                        }
                         insertDom({ action: 'join', message: msg })
                     }
                 }
@@ -41,9 +38,6 @@ const Barrage = class {
                     if (b[this.propsId].children.props.message) {
                         let message = this.messageParse(b)
                         if (message) {
-                            if (this.eventRegirst.message) {
-                                this.event['join'](message)
-                            }
                             if (_this.option.message === false && !message.isGift) {
                                 return
                             }
@@ -54,6 +48,7 @@ const Barrage = class {
             }
         });
         this.chatObserverrom.observe(this.chatDom, { childList: true });
+        console.log('安装完成 √')
     }
     getUser(user) {
         if (!user) {
@@ -130,6 +125,7 @@ const Barrage = class {
 }
 document.querySelector('.basicPlayer').remove()
 
+console.log('脚本安装中..')
 let bar = new Barrage()
 
 bar.runServer()
