@@ -1,0 +1,19 @@
+._chatDiv {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 9999;
+    height: 100%;
+    overflow: hidden;
+}
+
+#_chatDiv_list {
+    margin: 0;
+}
+
+#_chatDiv_list li {
+    padding: 10px;
+}
