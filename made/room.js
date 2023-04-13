@@ -121,8 +121,8 @@ let chatTemplate = `<div style="display: flex; align-items: flex-start; margin-b
   <img src="{src}" alt="Avatar" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 8px;" class="avatar">
   <div style="display: flex; flex-direction: column; padding: 8px; background-color: #F5F5F5; border-radius: 8px;" class="message">
     <div style=" margin-bottom: 4px;font-size:12px;" class="user-name">{nick}</div>
-    <div style="margin-bottom: 4px;" class="text">{text}</div>
-    <div style="font-size: 12px; color: #888888;" class="time">{time}</div>
+    <div style="margin-bottom: 4px;font-size:14px" class="text">{text}</div>
+    <div style="font-size: 12px; color: #888888;margin-top:5px" class="time">{time}</div>
   </div>
 </div>`
 
