@@ -1,3 +1,4 @@
+let _box = null
 const Barrage = class {
     propsId = null
     chatDom = null
@@ -7,41 +8,21 @@ const Barrage = class {
     chatObserverrom = null
     option = {}
     constructor() {
+        _box = document.getElementById('_chatDiv_list')
         this.propsId = Object.keys(document.querySelector('.webcast-chatroom___list'))[1]
         this.chatDom = document.querySelector('.webcast-chatroom___items').children[0]
         this.roomJoinDom = document.querySelector('.webcast-chatroom___bottom-message')
     }
     runServer() {
         let _this = this
-        if (this.option.join) {
-            this.observer = new MutationObserver((mutationsList) => {
-                for (let mutation of mutationsList) {
-                    if (mutation.type === 'childList' && mutation.addedNodes.length) {
-                        let dom = mutation.addedNodes[0]
-                        let user = dom[this.propsId].children.props.message.payload.user
-                        let msg = {
-                            ...this.getUser(user),
-                            ... { msg_content: `${user.nickname} 来了` }
-                        }
-                        insertDom({ action: 'join', message: msg })
-                    }
-                }
-            });
-            this.observer.observe(this.roomJoinDom, { childList: true });
-
-        }
-
         this.chatObserverrom = new MutationObserver((mutationsList, observer) => {
             for (let mutation of mutationsList) {
                 if (mutation.type === 'childList' && mutation.addedNodes.length) {
                     let b = mutation.addedNodes[0]
                     if (b[this.propsId].children.props.message) {
                         let message = this.messageParse(b)
-                        if (message) {
-                            if (_this.option.message === false && !message.isGift) {
-                                return
-                            }
-                            insertDom({ action: 'message', message: message })
+                        if (message && !message.isGift) {
+                            insertDom(message)
                         }
                     }
                 }
@@ -130,6 +111,20 @@ let bar = new Barrage()
 
 bar.runServer()
 
+let chatTemplate = `<li><div style="display: flex; align-items: center; margin-bottom: 12px;" class="chat-bubble">
+  <img src="{src}" alt="Avatar" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 8px;" class="avatar">
+  <div style="display: flex; flex-direction: column; padding: 8px; background-color: #F5F5F5; border-radius: 8px;" class="message">
+    <div style="font-weight: bold; margin-bottom: 4px;" class="user-name">{nick}</div>
+    <div style="margin-bottom: 4px;" class="text">{text}</div>
+    <div style="font-size: 12px; color: #888888;" class="time">{time}</div>
+  </div>
+</div></li>`
+
 function insertDom(msg) {
     console.log(msg)
+    if (!msg.isGift) {
+        item.innerHTML = chatTemplate.replace('{src}', msg.user_avatar).replace('{nick}', msg.user_nickName).replace('{text}', msg.msg_content)
+        _box.appendChild(item)
+    }
+
 }
