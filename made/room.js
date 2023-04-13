@@ -130,6 +130,10 @@ const Barrage = class {
 }
 document.querySelector('.basicPlayer').remove()
 
+let bar = new Barrage()
+
+bar.runServer()
+
 function insertDom(msg) {
     console.log(msg)
 }
