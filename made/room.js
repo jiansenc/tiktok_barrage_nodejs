@@ -1,4 +1,7 @@
 let _box = null
+var dcount = 0
+const chatWindow = document.querySelector('#_chatDiv_list');
+
 const Barrage = class {
     propsId = null
     chatDom = null
@@ -8,6 +11,9 @@ const Barrage = class {
     chatObserverrom = null
     option = {}
     constructor() {
+
+
+
         _box = document.getElementById('_chatDiv_list')
         this.propsId = Object.keys(document.querySelector('.webcast-chatroom___list'))[1]
         this.chatDom = document.querySelector('.webcast-chatroom___items').children[0]
@@ -121,8 +127,13 @@ let chatTemplate = `<div style="display: flex; align-items: flex-start; margin-b
 </div>`
 
 function insertDom(msg) {
+    dcount++
+    if (dcount.length > 100) {
+        _box.innerHTML = ''
+    }
     let item = document.createElement('li')
     let time = new Date().toLocaleTimeString()
     item.innerHTML = chatTemplate.replace('{src}', msg.user_avatar).replace('{nick}', msg.user_nickName).replace('{time}', time).replace('{text}', msg.msg_content)
     _box.appendChild(item)
+    chatWindow.scrollTop = chatWindow.scrollHeight;
 }
