@@ -1,3 +1,8 @@
+// 测试
+// window.onDouyinServer = function() {
+//     new Barrage({ message: false })
+// }
+
 const Barrage = class {
     wsurl = "ws://127.0.0.1:9527"
     timer = null
@@ -139,6 +144,7 @@ const Barrage = class {
         }
         let msg = dom[this.propsId].children.props.message.payload
         let result = {
+            repeatCount: null,
             gift_id: null,
             gift_name: null,
             gift_number: null,
@@ -146,15 +152,19 @@ const Barrage = class {
             gift_diamondCount: null,
             gift_describe: null,
         }
+
         result = Object.assign(result, this.getUser(msg.user))
         switch (msg.common.method) {
             case 'WebcastGiftMessage':
+                console.log(msg)
                 result = Object.assign(result, {
+                    // repeatCount: parseInt(),
                     msg_content: msg.common.describe,
                     isGift: true,
                     gift_id: msg.gift.id,
                     gift_name: msg.gift.name,
-                    gift_number: parseInt(msg.comboCount),
+                    // gift_number: parseInt(msg.comboCount),
+                    gift_number: parseInt(msg.repeatCount),
                     gift_image: msg.gift.icon.urlListList[0],
                     gift_diamondCount: msg.gift.diamondCount,
                     gift_describe: msg.gift.describe,
