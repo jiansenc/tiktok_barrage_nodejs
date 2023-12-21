@@ -89,6 +89,7 @@ a#qmenu {
     box-shadow: 0px 5px 5px 0px #00000026;
 }
 
+
 .p_pop a {
     display: block;
     padding: 10px 20px;
@@ -457,4 +458,8 @@ div#online {
 }
 .bm_h strong,.bm_h span{
         font-weight: normal;
+}
+
+.boxbg_7ree {
+    background: none!important;
 }
