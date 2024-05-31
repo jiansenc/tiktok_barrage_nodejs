@@ -127,17 +127,13 @@ function getUser(user) {
 }
 
 function ws_send(message) {
-    // console.log(message)
-    // console.log(message.message_type + ":-> " + message.message_describe);
-    // console.log(message)
+    console.log(message)
     ws.send(JSON.stringify(message));
 }
 
 function init() {
     console.clear()
     console.log(`[${new Date().toLocaleTimeString()}]`, `欢迎加入QQ群590109588：https://qm.qq.com/q/YAs31tGvUm`)
-        // console.log(`[${new Date().toLocaleTimeString()}]`, '正在删除视频流..')
-    console.log('正在连接：' + wsurl)
     ws = new WebSocket(wsurl);
     ws.onclose = () => {
         console.log("服务器断开,请启动ws服务" + wsurl);
@@ -146,7 +142,7 @@ function init() {
         console.log("服务器断开,请启动ws服务" + wsurl);
     };
     ws.onopen = () => {
-        console.log("连接成功:" + wsurl);
+        console.log("连接ws成功:" + wsurl);
         observer.observe(roomJoinDom, { childList: true });
         chatObserverrom.observe(chatDom, { childList: true });
     };
