@@ -74,6 +74,11 @@ document.body.appendChild(scriptElement)
 - 3.打开抖音直播间粘贴代码
 - 4.载入完成后便会接收到信息。观察 web_socket_test.html 页面状态
 
+![run](https://jiansenc.github.io/tiktok_barrage_nodejs/src/images/20240531172717.jpg)
+
+![run](https://jiansenc.github.io/tiktok_barrage_nodejs/src/images/20240531172531.jpg)
+![run](https://jiansenc.github.io/tiktok_barrage_nodejs/src/images/20240531173008.jpg)
+
 ## end
 
 - 如果你有更好的想法,欢迎提交 PR

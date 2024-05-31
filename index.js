@@ -127,7 +127,6 @@ function getUser(user) {
 }
 
 function ws_send(message) {
-    console.log(message)
     ws.send(JSON.stringify(message));
 }
 
