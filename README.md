@@ -17,53 +17,51 @@ document.body.appendChild(scriptElement)
 
 ```json
 {
-  "message_type": "join",
+  "message_type": "gift",
   "user_follow_status": "y",
-  "user_id": "xxx",
-  "user_url": "https://www.douyin.com/user/xx",
+  "user_id": "123456",
+  "user_url": "https://www.douyin.com/user/xxx",
   "user_nickName": "userxxx",
   "user_avatar": "https://p3.douyinpic.com/xxx.jpeg",
-  "user_gender": "男",
+  "user_gender": "女",
   "user_is_admin": "n",
   "user_is_super_admin": "n",
-  "user_level_value": null,
-  "user_level_icon": null,
-  "user_fans_light_level_value": null,
-  "user_fans_light_level_name": null,
-  "user_fans_light_icon_url": null,
-  "gift_combo_count": null,
-  "gift_id": null,
-  "gift_url": null,
-  "gift_name": null,
-  "gift_total_count": null,
-  "message_describe": "userxxx 来了"
+  "user_level_value": "7",
+  "user_level_icon": "http://p3-webcast.douyinpic.com/xxx.image",
+  "user_fans_light_level_value": "2",
+  "user_fans_light_level_name": "xxx",
+  "user_fans_light_icon_url": "http://p3-webcast.douyinpic.com/xxx.image",
+  "gift_id": "685",
+  "gift_url": "http://p11-webcast.douyinpic.com/img/xxx.png",
+  "gift_name": "粉丝团灯牌",
+  "gift_total_count": "1",
+  "message_describe": "userxxx 送出了 粉丝团灯牌 x1"
 }
 ```
 
 ### JSON 字段说明
 
-| 字段                        | 类型   | 说明                                                     |
-| --------------------------- | ------ | -------------------------------------------------------- |
-| message_type                | string | 消息类型 text:文字 join: 进入房间, like:点赞, gift:礼物, |
-| user_follow_status          | string | 是否关注, y: 是, n: 否                                   |
-| user_id                     | string | 抖音号                                                   |
-| user_url                    | string | 抖音 web 个人中心                                        |
-| user_nickName               | string | 用户昵称                                                 |
-| user_avatar                 | string | 用户头像                                                 |
-| user_gender                 | string | 用户性别                                                 |
-| user_is_admin               | string | 是否管理员, y: 是, n: 否                                 |
-| user_is_super_admin         | string | 是否超级管理员, y: 是, n: 否                             |
-| user_level_value            | number | 抖音等级                                                 |
-| user_level_icon             | string | 抖音等级图片                                             |
-| user_fans_light_level_value | number | 粉丝灯牌等级                                             |
-| user_fans_light_level_name  | string | 粉丝灯牌名称                                             |
-| user_fans_light_icon_url    | string | 粉丝灯牌图片                                             |
-| gift_combo_count            | number | 送出礼物个数                                             |
-| gift_id                     | string | 礼物 ID                                                  |
-| gift_url                    | string | 礼物图片 URL                                             |
-| gift_name                   | string | 礼物名称                                                 |
-| gift_total_count            | string | 礼物个数                                                 |
-| message_describe            | string | 消息描述                                                 |
+| 字段                        | 说明                                                     |
+| --------------------------- | -------------------------------------------------------- |
+| message_type                | 消息类型 text:文字 join: 进入房间, like:点赞, gift:礼物, |
+| user_follow_status          | 是否关注, y: 是, n: 否                                   |
+| user_id                     | 抖音号                                                   |
+| user_url                    | 抖音 web 个人中心                                        |
+| user_nickName               | 用户昵称                                                 |
+| user_avatar                 | 用户头像                                                 |
+| user_gender                 | 用户性别                                                 |
+| user_is_admin               | 是否管理员, y: 是, n: 否                                 |
+| user_is_super_admin         | 是否超级管理员, y: 是, n: 否                             |
+| user_level_value            | 抖音等级                                                 |
+| user_level_icon             | 抖音等级图片                                             |
+| user_fans_light_level_value | 粉丝灯牌等级                                             |
+| user_fans_light_level_name  | 粉丝灯牌名称                                             |
+| user_fans_light_icon_url    | 粉丝灯牌图片                                             |
+| gift_id                     | 礼物 ID                                                  |
+| gift_url                    | 礼物图片 URL                                             |
+| gift_name                   | 礼物名称                                                 |
+| gift_total_count            | 礼物个数                                                 |
+| message_describe            | 消息描述                                                 |
 
 ## 正向 websocket (辅助)
 
