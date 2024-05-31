@@ -75,3 +75,8 @@ document.body.appendChild(scriptElement)
 - 2.打开本项目 web_socket_test.html 文件
 - 3.打开抖音直播间粘贴代码
 - 4.载入完成后便会接收到信息。观察 web_socket_test.html 页面状态
+
+## end
+
+- 如果你有更好的想法,欢迎提交 PR
+- 欢迎加入 QQ 群 590109588：https://qm.qq.com/q/YAs31tGvUm

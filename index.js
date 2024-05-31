@@ -133,7 +133,6 @@ function ws_send(message) {
 
 function init() {
     console.clear()
-    console.log(`[${new Date().toLocaleTimeString()}]`, `欢迎加入QQ群590109588：https://qm.qq.com/q/YAs31tGvUm`)
     ws = new WebSocket(wsurl);
     ws.onclose = () => {
         console.log("服务器断开,请启动ws服务" + wsurl);
