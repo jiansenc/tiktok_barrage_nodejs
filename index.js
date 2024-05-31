@@ -113,13 +113,13 @@ function getUser(user) {
 
     user.badge_image_list.map((item) => {
         if (item.image_type === 1) {
-            msg.level_value = item.content.level;
-            msg.level_icon = item.url_list[0];
+            msg.user_level_value = item.content.level;
+            msg.user_level_icon = item.url_list[0];
         }
         if (item.image_type === 7) {
-            msg.fans_light_level_value = item.content.level;
-            msg.fans_light_level_name = item.content.name;
-            msg.fans_light_icon_url = item.url_list[0];
+            msg.user_fans_light_level_value = item.content.level;
+            msg.user_fans_light_level_name = item.content.name;
+            msg.user_fans_light_icon_url = item.url_list[0];
         }
     });
 
