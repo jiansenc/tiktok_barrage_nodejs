@@ -78,8 +78,3 @@ document.body.appendChild(scriptElement)
 
 ![run](https://jiansenc.github.io/tiktok_barrage_nodejs/src/images/20240531172531.jpg)
 ![run](https://jiansenc.github.io/tiktok_barrage_nodejs/src/images/20240531173008.jpg)
-
-## end
-
-- 如果你有更好的想法,欢迎提交 PR
-- 欢迎加入 QQ 群 590109588：https://qm.qq.com/q/YAs31tGvUm
