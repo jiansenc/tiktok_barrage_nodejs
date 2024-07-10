@@ -65,12 +65,12 @@ document.body.appendChild(scriptElement)
 
 ## 正向 websocket (辅助)
 
-如果你的业务代码没能力启动 websocket 服务,你可以使用本项目的辅助工具 **ws 服务助手.exe** (易语言编写,谨防安全软件误杀),该软件会接受并转发弹幕消息。你的业务端只需接收弹幕信息。
+如果你的业务代码没能力启动 websocket 服务,你可以使用本项目的辅助工具 [**ws 服务助手.exe**](https://github.com/jiansenc/tiktok_barrage_nodejs/raw/main/ws%E6%9C%8D%E5%8A%A1%E5%8A%A9%E6%89%8B.exe) (易语言编写,谨防安全软件误杀),该软件会接受并转发弹幕消息。你的业务端只需接收弹幕信息。
 
 ## 使用 demo 例程
 
-- 1.启动的 ws 服务助手.exe
-- 2.打开本项目 web_socket_test.html 文件
+- 1.启动的 [ws 服务助手.exe](https://github.com/jiansenc/tiktok_barrage_nodejs/raw/main/ws%E6%9C%8D%E5%8A%A1%E5%8A%A9%E6%89%8B.exe)
+- 2.打开本项目 [web_socket_test.html(测试)](https://github.com/jiansenc/tiktok_barrage_nodejs/blob/main/web_socket_test.html) 文件
 - 3.打开抖音直播间粘贴代码
 - 4.载入完成后便会接收到信息。观察 web_socket_test.html 页面状态
 
