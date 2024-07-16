@@ -1,6 +1,7 @@
 ```javascript
 ⚠️ ⚠️ 由于 2024.7.16 抖音更新了SCP 安全策略，webscoket 被拦截 项目无法使用
-```javascript
+```
+
 - JavaScript 实现抖音弹幕监听, 并发送到 websocket
 - 你的业务端需要监听 ws://127.0.0.1:2019 端口, 并接收弹幕信息
 
