@@ -128,11 +128,18 @@ function getUser(user) {
 
 function ws_send(message) {
     console.log(message)
+    return
+    // 屏蔽
     ws.send(JSON.stringify(message));
 }
 
 function init() {
     console.clear()
+    observer.observe(roomJoinDom, { childList: true });
+    chatObserverrom.observe(chatDom, { childList: true });
+    return
+
+    // 屏蔽
     ws = new WebSocket(wsurl);
     ws.onclose = () => {
         console.log("服务器断开,请启动ws服务" + wsurl);
@@ -143,8 +150,7 @@ function init() {
     ws.onopen = () => {
         console.log("连接ws成功:" + wsurl);
         console.log("- 欢迎加入 QQ 群 590109588：https://qm.qq.com/q/YAs31tGvUm");
-        observer.observe(roomJoinDom, { childList: true });
-        chatObserverrom.observe(chatDom, { childList: true });
+        
     };
 
 }
