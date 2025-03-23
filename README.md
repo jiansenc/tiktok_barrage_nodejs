@@ -1,19 +1,14 @@
-```javascript
-⚠️ ⚠️ 由于 2024.7.16 抖音更新了SCP 安全策略，webscoket 被拦截 项目无法使用
-```
+# 抖音弹幕获取
 
-- JavaScript 实现抖音弹幕监听, 并发送到 websocket
-- 你的业务端需要监听 ws://127.0.0.1:2019 端口, 并接收弹幕信息
-
-### 使用方法
-
-- 1.启动的 ws 服务
-- 2.打开抖音直播间, 按 F12, 点击 Console, 粘贴下面代码, 回车执行
-- 3.载入完成后便会开始抓取弹幕并发送到 ws 服务
+- 1. 本脚本通过浏览器控制台注入，实现抖音直播弹幕信息的实时捕获，并以 JSON 格式输出。
+     脚本默认连接 WebSocket 服务器地址：ws://127.0.0.1:8080 并发送消息
+- 2. ⚠️ 注意：由于抖音最新安全策略（截至 2024.7.16），浏览器直接访问 WebSocket 服务存在限制。建议根据实际情况灵活调整接入方案。
+- 3. 若 WebSocket 服务无法正常连接，脚本将自动降级为控制台输出模式，方便调试和数据追踪。
 
 ```javascript
 var scriptElement = document.createElement('script')
-scriptElement.src = 'https://jiansenc.github.io/tiktok_barrage_nodejs/index.js?t=' + Math.random()
+scriptElement.src =
+	'https://jiansenc.github.io/tiktok_barrage_nodejs/index.js?t=' + Math.random()
 document.body.appendChild(scriptElement)
 ```
 
@@ -21,25 +16,25 @@ document.body.appendChild(scriptElement)
 
 ```json
 {
-  "message_type": "gift",
-  "user_follow_status": "y",
-  "user_id": "123456",
-  "user_url": "https://www.douyin.com/user/xxx",
-  "user_nickName": "userxxx",
-  "user_avatar": "https://p3.douyinpic.com/xxx.jpeg",
-  "user_gender": "女",
-  "user_is_admin": "n",
-  "user_is_super_admin": "n",
-  "user_level_value": "7",
-  "user_level_icon": "http://p3-webcast.douyinpic.com/xxx.image",
-  "user_fans_light_level_value": "2",
-  "user_fans_light_level_name": "xxx",
-  "user_fans_light_icon_url": "http://p3-webcast.douyinpic.com/xxx.image",
-  "gift_id": "685",
-  "gift_url": "http://p11-webcast.douyinpic.com/img/xxx.png",
-  "gift_name": "粉丝团灯牌",
-  "gift_total_count": "1",
-  "message_describe": "userxxx 送出了 粉丝团灯牌 x1"
+	"message_type": "gift",
+	"user_follow_status": "y",
+	"user_id": "123456",
+	"user_url": "https://www.douyin.com/user/xxx",
+	"user_nickName": "userxxx",
+	"user_avatar": "https://p3.douyinpic.com/xxx.jpeg",
+	"user_gender": "女",
+	"user_is_admin": "n",
+	"user_is_super_admin": "n",
+	"user_level_value": "7",
+	"user_level_icon": "http://p3-webcast.douyinpic.com/xxx.image",
+	"user_fans_light_level_value": "2",
+	"user_fans_light_level_name": "xxx",
+	"user_fans_light_icon_url": "http://p3-webcast.douyinpic.com/xxx.image",
+	"gift_id": "685",
+	"gift_url": "http://p11-webcast.douyinpic.com/img/xxx.png",
+	"gift_name": "粉丝团灯牌",
+	"gift_total_count": "1",
+	"message_describe": "userxxx 送出了 粉丝团灯牌 x1"
 }
 ```
 
@@ -67,18 +62,8 @@ document.body.appendChild(scriptElement)
 | gift_total_count            | 礼物个数                                                 |
 | message_describe            | 消息描述                                                 |
 
-## 正向 websocket (辅助)
+![run](https://jiansenc.github.io/tiktok_barrage_nodejs/src/images/001.jpg)
 
-如果你的业务代码没能力启动 websocket 服务,你可以使用本项目的辅助工具 [**ws 服务助手.exe**](https://github.com/jiansenc/tiktok_barrage_nodejs/raw/main/ws%E6%9C%8D%E5%8A%A1%E5%8A%A9%E6%89%8B.exe) (易语言编写,谨防安全软件误杀),该软件会接受并转发弹幕消息。你的业务端只需接收弹幕信息。
+# 礼物代码表
 
-## 使用 demo 例程
-
-- 1.启动的 [ws 服务助手.exe](https://github.com/jiansenc/tiktok_barrage_nodejs/raw/main/ws%E6%9C%8D%E5%8A%A1%E5%8A%A9%E6%89%8B.exe)
-- 2.打开本项目 [web_socket_test.html(测试)](https://github.com/jiansenc/tiktok_barrage_nodejs/blob/main/web_socket_test.html) 文件
-- 3.打开抖音直播间粘贴代码
-- 4.载入完成后便会接收到信息。观察 web_socket_test.html 页面状态
-
-![run](https://jiansenc.github.io/tiktok_barrage_nodejs/src/images/20240531172717.jpg)
-
-![run](https://jiansenc.github.io/tiktok_barrage_nodejs/src/images/20240531172531.jpg)
-![run](https://jiansenc.github.io/tiktok_barrage_nodejs/src/images/20240531173008.jpg)
+https://jiansenc.github.io/tiktok_barrage_nodejs/src/lib/git_code.html
