@@ -62,7 +62,7 @@ document.body.appendChild(scriptElement)
 | gift_total_count            | 礼物个数                                                 |
 | message_describe            | 消息描述                                                 |
 
-![run](https://jiansenc.github.io/tiktok_barrage_nodejs/src/images/001.jpg)
+![run](https://jiansenc.github.io/tiktok_barrage_nodejs/src/images/001.png)
 
 # 礼物代码表
 
