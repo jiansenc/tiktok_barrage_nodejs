@@ -159,7 +159,6 @@ function init() {
 	}
 	ws.onopen = () => {
 		console.log('连接ws成功:' + wsurl)
-		console.log('- 欢迎加入 QQ 群 590109588：https://qm.qq.com/q/YAs31tGvUm')
 	}
 }
 init()
