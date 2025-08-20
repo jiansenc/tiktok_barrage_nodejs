@@ -71,4 +71,4 @@ https://jiansenc.github.io/tiktok_barrage_nodejs/src/lib/git_code.html
 本项目CDN加速和安全保护由腾讯EdgeOne赞助。
 
 
-![https://jiansenc.github.io/tiktok_barrage_nodejs/src/images/001.png](https://edgeone.ai/media/34fe3a45-492d-4ea4-ae5d-ea1087ca7b4b.png)
+![https://edgeone.ai/zh](https://edgeone.ai/media/34fe3a45-492d-4ea4-ae5d-ea1087ca7b4b.png)
